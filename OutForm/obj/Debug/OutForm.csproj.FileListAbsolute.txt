@@ -27,3 +27,13 @@ C:\Users\Mishanya - PC\Desktop\AutoRegress\OutForm\obj\Debug\OutForm.csproj.Gene
 C:\Users\Mishanya - PC\Desktop\AutoRegress\OutForm\obj\Debug\OutForm.exe
 C:\Users\Mishanya - PC\Desktop\AutoRegress\OutForm\obj\Debug\OutForm.pdb
 C:\Users\Mishanya - PC\Desktop\AutoRegress\OutForm\obj\Debug\OutForm.csprojAssemblyReference.cache
+D:\VS Pojects\Dispersion\bin\Debug\OutForm.exe.config
+D:\VS Pojects\Dispersion\bin\Debug\OutForm.exe
+D:\VS Pojects\Dispersion\bin\Debug\OutForm.pdb
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.csprojAssemblyReference.cache
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.Controls.SinPanel.resources
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.MainForm.resources
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.Properties.Resources.resources
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.csproj.GenerateResource.cache
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.exe
+D:\VS Pojects\Dispersion\OutForm\obj\Debug\OutForm.pdb

@@ -41,11 +41,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TextL = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Corr = new System.Windows.Forms.Button();
+            this.Fourea = new System.Windows.Forms.Button();
             this.Paint = new System.Windows.Forms.Button();
-            this.sinPanel1 = new OutForm.Controls.SinPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.GraphNum = new System.Windows.Forms.TextBox();
+            this.BeforeFourea = new System.Windows.Forms.Button();
+            this.sinPanel1 = new OutForm.Controls.SinPanel();
             ((System.ComponentModel.ISupportInitialize)(this.SignGraph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +67,9 @@
             // 
             // Start
             // 
-            this.Start.Location = new System.Drawing.Point(1048, 614);
+            this.Start.Location = new System.Drawing.Point(1048, 286);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(100, 23);
+            this.Start.Size = new System.Drawing.Size(211, 23);
             this.Start.TabIndex = 3;
             this.Start.Text = "Поiхали";
             this.Start.UseVisualStyleBackColor = true;
@@ -76,18 +77,18 @@
             // 
             // Clear
             // 
-            this.Clear.Location = new System.Drawing.Point(1159, 614);
+            this.Clear.Location = new System.Drawing.Point(1048, 614);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(100, 23);
+            this.Clear.Size = new System.Drawing.Size(211, 23);
             this.Clear.TabIndex = 4;
-            this.Clear.Text = "Почистить";
+            this.Clear.Text = "Почистить душу и массивы";
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1197, 492);
+            this.label2.Location = new System.Drawing.Point(1203, 417);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 5;
@@ -95,7 +96,7 @@
             // 
             // NoisePerc
             // 
-            this.NoisePerc.Location = new System.Drawing.Point(1159, 508);
+            this.NoisePerc.Location = new System.Drawing.Point(1159, 433);
             this.NoisePerc.Name = "NoisePerc";
             this.NoisePerc.Size = new System.Drawing.Size(100, 20);
             this.NoisePerc.TabIndex = 6;
@@ -103,7 +104,7 @@
             // 
             // NoiseText
             // 
-            this.NoiseText.Location = new System.Drawing.Point(1048, 508);
+            this.NoiseText.Location = new System.Drawing.Point(1048, 433);
             this.NoiseText.Name = "NoiseText";
             this.NoiseText.Size = new System.Drawing.Size(100, 20);
             this.NoiseText.TabIndex = 8;
@@ -128,41 +129,69 @@
             // 
             // TextL
             // 
-            this.TextL.Location = new System.Drawing.Point(1045, 311);
+            this.TextL.Location = new System.Drawing.Point(1045, 247);
             this.TextL.Name = "TextL";
             this.TextL.Size = new System.Drawing.Size(103, 20);
             this.TextL.TabIndex = 23;
             this.TextL.Text = "10";
-            this.TextL.TextChanged += new System.EventHandler(this.TextL_TextChanged);
+            this.TextL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextL_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1045, 295);
+            this.label1.Location = new System.Drawing.Point(1045, 231);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 24;
             this.label1.Text = "L";
             // 
-            // Corr
+            // Fourea
             // 
-            this.Corr.Location = new System.Drawing.Point(1048, 565);
-            this.Corr.Name = "Corr";
-            this.Corr.Size = new System.Drawing.Size(100, 23);
-            this.Corr.TabIndex = 26;
-            this.Corr.Text = "Коррелограммы";
-            this.Corr.UseVisualStyleBackColor = true;
-            this.Corr.Click += new System.EventHandler(this.Corr_Click);
+            this.Fourea.Location = new System.Drawing.Point(1048, 344);
+            this.Fourea.Name = "Fourea";
+            this.Fourea.Size = new System.Drawing.Size(211, 23);
+            this.Fourea.TabIndex = 26;
+            this.Fourea.Text = "А ещё Фурье";
+            this.Fourea.UseVisualStyleBackColor = true;
+            this.Fourea.Click += new System.EventHandler(this.Fourea_Click);
             // 
             // Paint
             // 
-            this.Paint.Location = new System.Drawing.Point(1159, 565);
+            this.Paint.Location = new System.Drawing.Point(1048, 373);
             this.Paint.Name = "Paint";
-            this.Paint.Size = new System.Drawing.Size(100, 23);
+            this.Paint.Size = new System.Drawing.Size(211, 23);
             this.Paint.TabIndex = 27;
-            this.Paint.Text = "Построить";
+            this.Paint.Text = "Построим Дисперсию";
             this.Paint.UseVisualStyleBackColor = true;
             this.Paint.Click += new System.EventHandler(this.Paint_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1214, 231);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "График";
+            // 
+            // GraphNum
+            // 
+            this.GraphNum.Location = new System.Drawing.Point(1159, 247);
+            this.GraphNum.Name = "GraphNum";
+            this.GraphNum.Size = new System.Drawing.Size(100, 20);
+            this.GraphNum.TabIndex = 29;
+            this.GraphNum.Text = "1";
+            this.GraphNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GraphNum_KeyDown);
+            // 
+            // BeforeFourea
+            // 
+            this.BeforeFourea.Location = new System.Drawing.Point(1048, 315);
+            this.BeforeFourea.Name = "BeforeFourea";
+            this.BeforeFourea.Size = new System.Drawing.Size(211, 23);
+            this.BeforeFourea.TabIndex = 30;
+            this.BeforeFourea.Text = "Покеж коррелограммы";
+            this.BeforeFourea.UseVisualStyleBackColor = true;
+            this.BeforeFourea.Click += new System.EventHandler(this.Corr_Click);
             // 
             // sinPanel1
             // 
@@ -171,33 +200,16 @@
             this.sinPanel1.Size = new System.Drawing.Size(67, 82);
             this.sinPanel1.TabIndex = 15;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1214, 295);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "График";
-            // 
-            // GraphNum
-            // 
-            this.GraphNum.Location = new System.Drawing.Point(1159, 311);
-            this.GraphNum.Name = "GraphNum";
-            this.GraphNum.Size = new System.Drawing.Size(100, 20);
-            this.GraphNum.TabIndex = 29;
-            this.GraphNum.Text = "1";
-            this.GraphNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GraphNum_KeyDown);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 657);
+            this.Controls.Add(this.BeforeFourea);
             this.Controls.Add(this.GraphNum);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Paint);
-            this.Controls.Add(this.Corr);
+            this.Controls.Add(this.Fourea);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextL);
             this.Controls.Add(this.sinPanel1);
@@ -230,9 +242,10 @@
         private Controls.SinPanel sinPanel1;
         private System.Windows.Forms.TextBox TextL;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Corr;
+        private System.Windows.Forms.Button Fourea;
         private System.Windows.Forms.Button Paint;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox GraphNum;
+        private System.Windows.Forms.Button BeforeFourea;
     }
 }

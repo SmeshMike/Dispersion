@@ -27,7 +27,7 @@ namespace OutForm
             int ss = Convert.ToInt32(TextL.Text);
 
 
-            for (int i = 0; i < ss; i++)
+            for (int i = 0; i < ss+1; i++)
             {
                 this.SignGraph.Series.Add(new System.Windows.Forms.DataVisualization.Charting.Series()
                 {
@@ -121,80 +121,91 @@ namespace OutForm
             }
 
         }
-                 
 
-        private void Clear_Click(object sender, EventArgs e)
-        {
-            int ss = Convert.ToInt32(TextL.Text);
-
-            for (int i = 0; i < ss; i++)
-            {
-                SignGraph.Series[i].Points.Clear();
-            }
-
-            sign.Clear();
-            forform.Clear();
-            param.Clear();
-            fo = null;
-            corr.Clear();
-            Console.Clear();
-
-        }
-        
-        List<int> param = new List<int>();
-        List<dot> corr = new List<dot>();
-        double[] fo;
-        
         private void Corr_Click(object sender, EventArgs e)
         {
-            int ss = Convert.ToInt32(TextL.Text);
+            int l_count = Convert.ToInt16(TextL.Text);
+            int full_length = forform.GetS();
 
-            for (int i = 0; i < ss; i++)
+
+            //for (int i = 0; i < count; i++)
+            //{
+            //    SignGraph.Series[i].Points.Clear();
+            //}
+
+
+            corgraphtrue = forform.Corr(l_count, full_length);
+
+            corgraphclone.AddRange(corgraphtrue);
+
+            int iter = corgraphclone.Count();
+
+            while (iter != full_length)
             {
-                SignGraph.Series[i].Points.Clear();
+                corgraphclone.Add(new dot(0, 0, Convert.ToUInt32(iter)));
+                iter++;
             }
+            this.SignGraph.Series[l_count].Color = Color.Black;
+            this.SignGraph.Series[l_count].BorderWidth = 3;
+
+            for (int j = 0; j < full_length; j++)
+            {
+                int x;
+                double y;
+                x = j;
+                y = corgraphclone[j].real_amplitude;
+
+                SignGraph.Series[l_count].Points.AddXY(x, y);
+            }
+        }
+
+
+
+        List<int> param = new List<int>();
+
+        double[] fo;
+
+        List<dot> corgraphtrue = new List<dot>();
+        List<dot> corgraphclone = new List<dot>();
+        private void Fourea_Click(object sender, EventArgs e)
+        {
 
             int full_length = forform.GetS();
 
             int count = Convert.ToInt16(TextL.Text);
-            List<dot> sg = new List<dot>();
 
-            sg = forform.Corr(count, full_length);
-
-            int iter = sg.Count();
-
-            while (iter!= full_length)
+            for (int i = 0; i < count + 1; i++)
             {
-                sg.Add(new dot(0, 0, Convert.ToUInt32(iter)));
-                iter++;
+                SignGraph.Series[i].Points.Clear();
             }
+
 
             fo = new double[count];
 
             for (int i = 0; i < count; i++)
             {
-                var l = new List<dot>();
-                l.AddRange(sg);
+                var tmp = new List<dot>();
+                tmp.AddRange(corgraphclone);
 
-                for (int j = count; j >= count - i; j--)
+                for (int j = count - 1; j >= count - i; j--)            //заменяем начиная с конца элементы с нуля
                 {
-                    l[j] = new dot(0, 0, Convert.ToUInt32(count - i - 1));
+                    tmp[j] = new dot(0, 0, Convert.ToUInt32(count - i - 1));
                 }
-                
-                forform.Fourea(l, full_length, -1);
+
+                forform.Fourea(tmp, full_length, -1);           //хуячим Фурьём
 
                 double max = 0.0, itr = 0.0;
-                
-                for (int j = 0; j < full_length; j++)
-                {                    
-                    if (Math.Sqrt(l[j].im_amplitude * l[j].im_amplitude + l[j].real_amplitude * l[j].real_amplitude) >= max)
-                    { max = Math.Sqrt(l[j].im_amplitude * l[j].im_amplitude + l[j].real_amplitude * l[j].real_amplitude); itr = full_length-j; }
+
+                for (int j = 0; j < full_length/2; j++)
+                {
+                    if (Math.Sqrt(tmp[j].im_amplitude * tmp[j].im_amplitude + tmp[j].real_amplitude * tmp[j].real_amplitude) > max)
+                    { max = Math.Sqrt(tmp[j].im_amplitude * tmp[j].im_amplitude + tmp[j].real_amplitude * tmp[j].real_amplitude); itr = j; }
                 }
 
-                if (itr == full_length)
-                {
-                    itr = 0;
-                }
+                //if (itr == full_length)
+                //{
+                //    itr = 0;
+                //}
 
 
                 for (int j = 0; j < full_length; j++)
@@ -202,33 +213,35 @@ namespace OutForm
                     int x;
                     double y;
                     x = j;
-                    y = Math.Sqrt(l[j].im_amplitude * l[j].im_amplitude + l[j].real_amplitude * l[j].real_amplitude);
+                    y = Math.Sqrt(tmp[j].im_amplitude * tmp[j].im_amplitude + tmp[j].real_amplitude * tmp[j].real_amplitude);
 
                     SignGraph.Series[i].Points.AddXY(x, y);
                 }
-                
-                
+
+
                 fo[i] = (itr) * 2 / Convert.ToDouble(full_length);
 
 
 
                 Console.WriteLine(i + " itr  " + itr + "    fo   " + fo[i]);
             }
+
+            fo.Reverse();
         }
+
 
         private void Paint_Click(object sender, EventArgs e)
         {
 
             Console.Clear();
 
-            int ss = Convert.ToInt32(TextL.Text);
+            int count = Convert.ToInt32(TextL.Text);
 
-            for (int i = 0; i < ss; i++)
+            for (int i = 0; i < count; i++)
             {
                 SignGraph.Series[i].Points.Clear();
             }
-            
-            UInt16 count = Convert.ToUInt16(TextL.Text);
+
 
             double[] disp = new double[count];
             double f = Convert.ToDouble(sinPanel1.tbB.Text) / (2 * Math.PI);
@@ -236,12 +249,12 @@ namespace OutForm
             for (int i = 1; i <= count; i++)
             {
                 double diff = 0.0;
-                for (int j = count - i; j < count; j++)
+                for (int j = 0; j < i; j++)
                 {
-                    diff += (f - fo[count - j-1]) * (f - fo[count - j-1]);
+                    diff += (f - fo[j]) * (f - fo[j]);
                 }
 
-                Console.WriteLine(i + "   f   " + f + "    fo   " + fo[i - 1] + "     " + "    disp   " + diff/i);
+                Console.WriteLine(i + "   f   " + f + "    fo   " + fo[i-1] + "     " + "    disp   " + diff / i);
 
                 disp[i - 1] = diff / i;
 
@@ -255,49 +268,95 @@ namespace OutForm
                 x = i;
                 y = disp[i];
 
-                SignGraph.Series[1].Points.AddXY(x, y);
+                SignGraph.Series[0].Points.AddXY(x, y);
 
-                this.SignGraph.ChartAreas[0].AxisX.Interval = 1;
-                this.SignGraph.ChartAreas[0].AxisX.Minimum = 0;
+                //this.SignGraph.ChartAreas[0].AxisX.Interval = 1;
+                //this.SignGraph.ChartAreas[0].AxisX.Minimum = 0;
             }
 
             disp = null;
         }
 
-        private void TextL_TextChanged(object sender, EventArgs e)
+
+        private void Clear_Click(object sender, EventArgs e)
         {
-            this.SignGraph.Series.Clear();
+            int count = Convert.ToInt32(TextL.Text);
 
-            int ss = Convert.ToInt32(TextL.Text);
-
-
-            for (int i = 0; i < ss; i++)
+            for (int i = 0; i < count + 1; i++)
             {
-                this.SignGraph.Series.Add(new System.Windows.Forms.DataVisualization.Charting.Series()
-                {
-                    Name = "Series" + i,
-                    ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-
-                });
-                this.Load += Form1_Load;
+                SignGraph.Series[i].Points.Clear();
             }
 
+            sign.Clear();
+            forform.Clear();
+            param.Clear();
+            fo = null;
+            corgraphclone.Clear();
+            Console.Clear();
+            corgraphtrue.Clear();
+
         }
+        
+        
+
 
         private void GraphNum_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                int ss = Convert.ToInt32(TextL.Text);
 
-                for (int i = 0; i < ss; i++)
+                int full_length = forform.GetS();
+                int count = Convert.ToInt32(TextL.Text);
+
+                for (int i = 0; i < count; i++)
                 {
-                    if (i == Convert.ToInt32(GraphNum.Text))
-                        continue;
-
                     this.SignGraph.Series[i].Points.Clear();
                 }
-            
+
+                var tmp = new List<dot>();
+                tmp.AddRange(corgraphclone);
+
+                for (int j = count - 1; j >= count - Convert.ToInt32(GraphNum.Text); j--)            //заменяем начиная с конца элементы с нуля
+                {
+                    tmp[j] = new dot(0, 0, Convert.ToUInt32(j));
+                }
+
+                forform.Fourea(tmp, full_length, -1);
+
+                for (int j = 0; j < full_length; j++)
+                {
+                    int x;
+                    double y;
+                    x = j;
+                    y = Math.Sqrt(tmp[j].im_amplitude * tmp[j].im_amplitude + tmp[j].real_amplitude * tmp[j].real_amplitude);
+
+                    Console.WriteLine(j + "     " + y);
+
+                    SignGraph.Series[0].Points.AddXY(x, y);
+                }
+
+            }
+        }
+
+        private void TextL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SignGraph.Series.Clear();
+
+                int ss = Convert.ToInt32(TextL.Text);
+
+
+                for (int i = 0; i < ss + 1; i++)
+                {
+                    this.SignGraph.Series.Add(new System.Windows.Forms.DataVisualization.Charting.Series()
+                    {
+                        Name = "Series" + i,
+                        ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+
+                    });
+                    this.Load += Form1_Load;
+                }
             }
         }
     }
