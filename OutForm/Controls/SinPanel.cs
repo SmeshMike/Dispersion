@@ -20,8 +20,17 @@ namespace OutForm.Controls
             List<TextBox> l = new List<TextBox>();
             l.Add(tbA);
             l.Add(tbB);
+            l.Add(tbC);
 
             TextBoxes = l;
+        }
+
+        private void tbB_TextChanged(object sender, EventArgs e)
+        {
+            if (tbB.Text != null)
+            {
+                tbC.Text = Convert.ToString(Math.Round(Convert.ToDouble(tbB.Text) / (Math.PI * 2), 4));
+            }
         }
     }
 }

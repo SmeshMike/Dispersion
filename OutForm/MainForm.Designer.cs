@@ -46,9 +46,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.GraphNum = new System.Windows.Forms.TextBox();
             this.BeforeFourea = new System.Windows.Forms.Button();
-            this.sinPanel1 = new OutForm.Controls.SinPanel();
             this.Count = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.sinPanel1 = new OutForm.Controls.SinPanel();
             ((System.ComponentModel.ISupportInitialize)(this.SignGraph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,13 +195,6 @@
             this.BeforeFourea.UseVisualStyleBackColor = true;
             this.BeforeFourea.Click += new System.EventHandler(this.Corr_Click);
             // 
-            // sinPanel1
-            // 
-            this.sinPanel1.Location = new System.Drawing.Point(1048, 12);
-            this.sinPanel1.Name = "sinPanel1";
-            this.sinPanel1.Size = new System.Drawing.Size(67, 82);
-            this.sinPanel1.TabIndex = 15;
-            // 
             // Count
             // 
             this.Count.Location = new System.Drawing.Point(1113, 533);
@@ -219,6 +212,13 @@
             this.label5.Size = new System.Drawing.Size(149, 13);
             this.label5.TabIndex = 32;
             this.label5.Text = "Сколько спектров оставить";
+            // 
+            // sinPanel1
+            // 
+            this.sinPanel1.Location = new System.Drawing.Point(1045, 12);
+            this.sinPanel1.Name = "sinPanel1";
+            this.sinPanel1.Size = new System.Drawing.Size(67, 125);
+            this.sinPanel1.TabIndex = 15;
             // 
             // MainForm
             // 
