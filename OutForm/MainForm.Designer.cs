@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.SignGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Start = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
@@ -47,27 +47,29 @@
             this.GraphNum = new System.Windows.Forms.TextBox();
             this.BeforeFourea = new System.Windows.Forms.Button();
             this.sinPanel1 = new OutForm.Controls.SinPanel();
+            this.Count = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SignGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // SignGraph
             // 
-            chartArea2.Name = "ChartArea1";
-            this.SignGraph.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.SignGraph.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.SignGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.SignGraph.Legends.Add(legend1);
             this.SignGraph.Location = new System.Drawing.Point(12, 12);
             this.SignGraph.Name = "SignGraph";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series 1";
-            this.SignGraph.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series0";
+            this.SignGraph.Series.Add(series1);
             this.SignGraph.Size = new System.Drawing.Size(1027, 625);
             this.SignGraph.TabIndex = 0;
             // 
             // Start
             // 
-            this.Start.Location = new System.Drawing.Point(1048, 286);
+            this.Start.Location = new System.Drawing.Point(1048, 409);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(211, 23);
             this.Start.TabIndex = 3;
@@ -88,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1203, 417);
+            this.label2.Location = new System.Drawing.Point(1203, 367);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 5;
@@ -96,7 +98,7 @@
             // 
             // NoisePerc
             // 
-            this.NoisePerc.Location = new System.Drawing.Point(1159, 433);
+            this.NoisePerc.Location = new System.Drawing.Point(1159, 383);
             this.NoisePerc.Name = "NoisePerc";
             this.NoisePerc.Size = new System.Drawing.Size(100, 20);
             this.NoisePerc.TabIndex = 6;
@@ -104,7 +106,7 @@
             // 
             // NoiseText
             // 
-            this.NoiseText.Location = new System.Drawing.Point(1048, 433);
+            this.NoiseText.Location = new System.Drawing.Point(1048, 383);
             this.NoiseText.Name = "NoiseText";
             this.NoiseText.Size = new System.Drawing.Size(100, 20);
             this.NoiseText.TabIndex = 8;
@@ -129,7 +131,7 @@
             // 
             // TextL
             // 
-            this.TextL.Location = new System.Drawing.Point(1045, 247);
+            this.TextL.Location = new System.Drawing.Point(1045, 344);
             this.TextL.Name = "TextL";
             this.TextL.Size = new System.Drawing.Size(103, 20);
             this.TextL.TabIndex = 23;
@@ -139,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1045, 231);
+            this.label1.Location = new System.Drawing.Point(1045, 328);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 24;
@@ -147,7 +149,7 @@
             // 
             // Fourea
             // 
-            this.Fourea.Location = new System.Drawing.Point(1048, 344);
+            this.Fourea.Location = new System.Drawing.Point(1048, 467);
             this.Fourea.Name = "Fourea";
             this.Fourea.Size = new System.Drawing.Size(211, 23);
             this.Fourea.TabIndex = 26;
@@ -157,7 +159,7 @@
             // 
             // Paint
             // 
-            this.Paint.Location = new System.Drawing.Point(1048, 373);
+            this.Paint.Location = new System.Drawing.Point(1048, 559);
             this.Paint.Name = "Paint";
             this.Paint.Size = new System.Drawing.Size(211, 23);
             this.Paint.TabIndex = 27;
@@ -168,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1214, 231);
+            this.label4.Location = new System.Drawing.Point(1214, 328);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 28;
@@ -176,7 +178,7 @@
             // 
             // GraphNum
             // 
-            this.GraphNum.Location = new System.Drawing.Point(1159, 247);
+            this.GraphNum.Location = new System.Drawing.Point(1159, 344);
             this.GraphNum.Name = "GraphNum";
             this.GraphNum.Size = new System.Drawing.Size(100, 20);
             this.GraphNum.TabIndex = 29;
@@ -185,7 +187,7 @@
             // 
             // BeforeFourea
             // 
-            this.BeforeFourea.Location = new System.Drawing.Point(1048, 315);
+            this.BeforeFourea.Location = new System.Drawing.Point(1048, 438);
             this.BeforeFourea.Name = "BeforeFourea";
             this.BeforeFourea.Size = new System.Drawing.Size(211, 23);
             this.BeforeFourea.TabIndex = 30;
@@ -200,11 +202,31 @@
             this.sinPanel1.Size = new System.Drawing.Size(67, 82);
             this.sinPanel1.TabIndex = 15;
             // 
+            // Count
+            // 
+            this.Count.Location = new System.Drawing.Point(1113, 533);
+            this.Count.Name = "Count";
+            this.Count.Size = new System.Drawing.Size(146, 20);
+            this.Count.TabIndex = 31;
+            this.Count.Text = "1";
+            this.Count.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1110, 517);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(149, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Сколько спектров оставить";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 657);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Count);
             this.Controls.Add(this.BeforeFourea);
             this.Controls.Add(this.GraphNum);
             this.Controls.Add(this.label4);
@@ -247,5 +269,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox GraphNum;
         private System.Windows.Forms.Button BeforeFourea;
+        private System.Windows.Forms.TextBox Count;
+        private System.Windows.Forms.Label label5;
     }
 }
