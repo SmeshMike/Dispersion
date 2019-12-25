@@ -37,6 +37,8 @@ namespace OutForm
             //    });
             //    this.Load += Form1_Load;
             //}
+
+
             this.SignGraph.Series.Add(new System.Windows.Forms.DataVisualization.Charting.Series()
             {
                 Name = "Series1" ,
@@ -70,7 +72,7 @@ namespace OutForm
 
         private void Start_Click_1(object sender, EventArgs e)
         {
-
+            
 
             ////////////////// ОЧИСТКА ГРАФИКОВ И ФОРМЫ /////////////////////
 
@@ -96,8 +98,15 @@ namespace OutForm
             UInt32 last = _end;   //конец
 
 
+            if (SqWindow.Checked)
+                forform.SqSinGen(ampl, freq, phase, first, last);
+            else if (TrWindow.Checked)
+                forform.TrSinGen(ampl, freq, phase, first, Convert.ToInt32(last));
+            else if (CosWindow.Checked)
+                forform.CosSinGen(ampl, freq, phase, first, last);
 
-            forform.SinGen(ampl, freq, phase, first, last);
+            forform.SignalwithWhiteNoise(Convert.ToInt32(NoisePerc.Text));
+            NoiseText.Text = forform.GetCoef().ToString();
 
             sign = forform.SignReturn();
 
@@ -105,13 +114,15 @@ namespace OutForm
 
             SignGraph.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             SignGraph.Series[0].Color = Color.Red;
-            SignGraph.Series[0].BorderWidth = 2;
+            SignGraph.Series[0].BorderWidth = 1;
             SignGraph.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             SignGraph.Series[1].Color = Color.Black;
-            SignGraph.Series[1].BorderWidth = 3;
+            SignGraph.Series[1].BorderWidth = 1;
             SignGraph.Series[2].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             SignGraph.Series[2].Color = Color.Green;
-            SignGraph.Series[2].BorderWidth = 3;
+            SignGraph.Series[2].BorderWidth = 1;
+
+
 
 
             length = forform.GetS();

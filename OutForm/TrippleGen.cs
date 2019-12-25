@@ -33,7 +33,7 @@ namespace SomeShit
             signal_energy = 0.0;
         }
 
-        public void SinGen(double ampl, double samp_freq, double phase, UInt32 first, UInt32 last)
+        public void SqSinGen(double ampl, double samp_freq, double phase, UInt32 first, UInt32 last)
         {
             dot temp;
             
@@ -47,6 +47,54 @@ namespace SomeShit
                 mas_cur_phase.Add(current_phase);
 
                 a = ampl * Math.Sin(current_phase);
+                signal_energy += a*a;
+
+                temp = new dot(a, 0, i);
+
+                signal.Add(temp);
+            }
+        }
+
+        public void TrSinGen(double ampl, double samp_freq, double phase, int first, int last)
+        {
+            dot temp;
+
+            double coef;
+
+            for (int i = 0; i < last - first; i++)
+            {
+                double a;
+                
+                current_phase = phase + samp_freq * i;
+                mas_cur_phase.Add(current_phase);
+                coef = 1 - 2 * Math.Abs(Convert.ToDouble(i - last / 2) / Convert.ToDouble(last));
+
+
+                a = ampl * Math.Sin(current_phase) * coef;
+                signal_energy += a * a;
+
+                temp = new dot(a, 0, Convert.ToUInt32(i));
+
+                signal.Add(temp);
+            }
+        }
+
+        public void CosSinGen(double ampl, double samp_freq, double phase, UInt32 first, UInt32 last)
+        {
+            dot temp;
+
+
+
+            for (UInt32 i = 0; i < last - first; i++)
+            {
+
+                double a;
+                current_phase = phase + samp_freq * i;
+                mas_cur_phase.Add(current_phase);
+                double coef = 0.54 + 0.46 * Math.Cos(2 * Math.PI * (i - last / 2) / last);
+
+                a = ampl * Math.Sin(current_phase)* coef;
+                signal_energy += a * a;
 
                 temp = new dot(a, 0, i);
 
@@ -116,13 +164,13 @@ namespace SomeShit
         }
 
 
-        public void SignalGen(int sin_count, double[] _ampl, double[] _phase, double[] _samp_freq, UInt32[] _first, UInt32[] _last)
-        {
-            for (int i = 0; i < sin_count; i++)
-            {
-                SinGen(_ampl[i], _phase[i], _samp_freq[i], _first[i], _last[i]);
-            }
-        }
+        //public void SignalGen(int sin_count, double[] _ampl, double[] _phase, double[] _samp_freq, UInt32[] _first, UInt32[] _last)
+        //{
+        //    for (int i = 0; i < sin_count; i++)
+        //    {
+        //        SinGen(_ampl[i], _phase[i], _samp_freq[i], _first[i], _last[i]);
+        //    }
+        //}
 
         public void SignalwithWhiteNoise(int percent)
         {
@@ -131,11 +179,11 @@ namespace SomeShit
             double rand_part = 0;
             for (int i = 0; i < signal.Count; i++)
             {
-                for (int j = 0; j < 100; j++)
+                for (int j = 0; j < 10; j++)
                 {
                     rand_part += rnd.NextDouble() * 2 - 1;
                 }
-                rand_part = rand_part / 100;
+                rand_part = rand_part / 10;
 
                 noise_energy += rand_part * rand_part;
                 noise[i] = rand_part;
@@ -145,7 +193,7 @@ namespace SomeShit
 
             for (int i = 0; i < signal.Count; i++)
             {
-                signal[i] = new dot(percent * noise[i], 0, signal[i].x_pos);
+                signal[i] = new dot(signal[i].real_amplitude + percent * noise[i], 0, signal[i].x_pos);
             }
         }
 
@@ -193,9 +241,9 @@ namespace SomeShit
             signal_energy = 0;
             noise_energy = 0;
         }
-        public int GetCoef()
+        public double GetCoef()
         {
-            return Convert.ToInt32(Math.Sqrt(signal_energy / noise_energy));
+            return Convert.ToDouble(Math.Sqrt(signal_energy / noise_energy));
         }
 
         public double GetEnergy()

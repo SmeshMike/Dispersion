@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.SignGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Start = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
@@ -48,23 +48,26 @@
             this.BeforeFourea = new System.Windows.Forms.Button();
             this.Count = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.SqWindow = new System.Windows.Forms.RadioButton();
+            this.TrWindow = new System.Windows.Forms.RadioButton();
+            this.CosWindow = new System.Windows.Forms.RadioButton();
             this.sinPanel1 = new OutForm.Controls.SinPanel();
             ((System.ComponentModel.ISupportInitialize)(this.SignGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // SignGraph
             // 
-            chartArea1.Name = "ChartArea1";
-            this.SignGraph.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.SignGraph.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.SignGraph.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.SignGraph.Legends.Add(legend2);
             this.SignGraph.Location = new System.Drawing.Point(12, 12);
             this.SignGraph.Name = "SignGraph";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series0";
-            this.SignGraph.Series.Add(series1);
-            this.SignGraph.Size = new System.Drawing.Size(1027, 625);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series0";
+            this.SignGraph.Series.Add(series2);
+            this.SignGraph.Size = new System.Drawing.Size(1017, 625);
             this.SignGraph.TabIndex = 0;
             // 
             // Start
@@ -90,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1203, 367);
+            this.label2.Location = new System.Drawing.Point(1203, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 5;
@@ -98,7 +101,7 @@
             // 
             // NoisePerc
             // 
-            this.NoisePerc.Location = new System.Drawing.Point(1159, 383);
+            this.NoisePerc.Location = new System.Drawing.Point(1159, 201);
             this.NoisePerc.Name = "NoisePerc";
             this.NoisePerc.Size = new System.Drawing.Size(100, 20);
             this.NoisePerc.TabIndex = 6;
@@ -106,7 +109,7 @@
             // 
             // NoiseText
             // 
-            this.NoiseText.Location = new System.Drawing.Point(1048, 383);
+            this.NoiseText.Location = new System.Drawing.Point(1048, 201);
             this.NoiseText.Name = "NoiseText";
             this.NoiseText.Size = new System.Drawing.Size(100, 20);
             this.NoiseText.TabIndex = 8;
@@ -114,7 +117,7 @@
             // 
             // end
             // 
-            this.end.Location = new System.Drawing.Point(1134, 28);
+            this.end.Location = new System.Drawing.Point(1193, 28);
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(60, 20);
             this.end.TabIndex = 9;
@@ -123,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1131, 12);
+            this.label3.Location = new System.Drawing.Point(1162, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 11;
@@ -131,17 +134,17 @@
             // 
             // TextL
             // 
-            this.TextL.Location = new System.Drawing.Point(1045, 344);
+            this.TextL.Location = new System.Drawing.Point(1048, 162);
             this.TextL.Name = "TextL";
-            this.TextL.Size = new System.Drawing.Size(103, 20);
+            this.TextL.Size = new System.Drawing.Size(100, 20);
             this.TextL.TabIndex = 23;
-            this.TextL.Text = "10";
+            this.TextL.Text = "100";
             this.TextL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextL_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1045, 328);
+            this.label1.Location = new System.Drawing.Point(1045, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 24;
@@ -170,7 +173,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1214, 328);
+            this.label4.Location = new System.Drawing.Point(1214, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 28;
@@ -178,7 +181,7 @@
             // 
             // GraphNum
             // 
-            this.GraphNum.Location = new System.Drawing.Point(1159, 344);
+            this.GraphNum.Location = new System.Drawing.Point(1159, 162);
             this.GraphNum.Name = "GraphNum";
             this.GraphNum.Size = new System.Drawing.Size(100, 20);
             this.GraphNum.TabIndex = 29;
@@ -213,9 +216,41 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "Сколько спектров оставить";
             // 
+            // SqWindow
+            // 
+            this.SqWindow.AutoSize = true;
+            this.SqWindow.Checked = true;
+            this.SqWindow.Location = new System.Drawing.Point(1048, 254);
+            this.SqWindow.Name = "SqWindow";
+            this.SqWindow.Size = new System.Drawing.Size(112, 17);
+            this.SqWindow.TabIndex = 33;
+            this.SqWindow.TabStop = true;
+            this.SqWindow.Text = "Квадратное окно";
+            this.SqWindow.UseVisualStyleBackColor = true;
+            // 
+            // TrWindow
+            // 
+            this.TrWindow.AutoSize = true;
+            this.TrWindow.Location = new System.Drawing.Point(1048, 277);
+            this.TrWindow.Name = "TrWindow";
+            this.TrWindow.Size = new System.Drawing.Size(117, 17);
+            this.TrWindow.TabIndex = 34;
+            this.TrWindow.Text = "Треугольное окно";
+            this.TrWindow.UseVisualStyleBackColor = true;
+            // 
+            // CosWindow
+            // 
+            this.CosWindow.AutoSize = true;
+            this.CosWindow.Location = new System.Drawing.Point(1048, 300);
+            this.CosWindow.Name = "CosWindow";
+            this.CosWindow.Size = new System.Drawing.Size(148, 17);
+            this.CosWindow.TabIndex = 35;
+            this.CosWindow.Text = "Косинусоидальное окно";
+            this.CosWindow.UseVisualStyleBackColor = true;
+            // 
             // sinPanel1
             // 
-            this.sinPanel1.Location = new System.Drawing.Point(1045, 12);
+            this.sinPanel1.Location = new System.Drawing.Point(1048, 12);
             this.sinPanel1.Name = "sinPanel1";
             this.sinPanel1.Size = new System.Drawing.Size(67, 125);
             this.sinPanel1.TabIndex = 15;
@@ -225,6 +260,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 657);
+            this.Controls.Add(this.CosWindow);
+            this.Controls.Add(this.TrWindow);
+            this.Controls.Add(this.SqWindow);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Count);
             this.Controls.Add(this.BeforeFourea);
@@ -271,5 +309,8 @@
         private System.Windows.Forms.Button BeforeFourea;
         private System.Windows.Forms.TextBox Count;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton SqWindow;
+        private System.Windows.Forms.RadioButton TrWindow;
+        private System.Windows.Forms.RadioButton CosWindow;
     }
 }
